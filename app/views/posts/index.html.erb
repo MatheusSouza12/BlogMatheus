@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Blog Matheus Souza</h1>
+<h3>Postagens</h3>
+<a href="https://www.google.com">Google</a>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Descricao</th>
+      <th>Imagem</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.titulo %></td>
+        <td><%= post.descricao %></td>
+        <td><%= image_tag post.imagem.url(:thumb) %></td>
+        <td><%= link_to 'Mostrar', post %></td>
+        <td><%= link_to 'Editar', edit_post_path(post) %></td>
+        <td><%= link_to 'Excluir', post, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= javascript_include_tag :defaults, "nested_form" %>
+<%= link_to 'Nova Postagem', new_post_path %>
+
+
+
